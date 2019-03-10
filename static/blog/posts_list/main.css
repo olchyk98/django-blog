@@ -1,0 +1,16 @@
+.articles {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.articles-item {
+    flex-shrink:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:800px;
+    max-width:100vw;
+    height:400px;
+    background:red;
+}

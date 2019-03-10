@@ -1,0 +1,45 @@
+html, body {
+    margin:0;
+    height:100%;
+}
+
+body {
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+}
+
+.nav {
+    --padding:20px;
+
+    height:60px;
+    background:white;
+    width:calc(100vw - var(--padding) * 2);
+    padding-left:var(--padding);
+    padding-right:var(--padding);
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.nav-logo {
+    font-family:"Quicksand";
+    font-weight:400;
+    font-size:1.75rem;
+}
+
+.nav-menu-link {
+    font-size:1rem;
+    color:rgba(0, 0, 0, .8);
+    font-family:"Arial";
+    text-transform:uppercase;
+    text-decoration:none;
+    margin-left:15px;
+}
+
+.content {
+    height:100%;
+    width:100vw;
+    overflow:scroll;
+}

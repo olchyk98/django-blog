@@ -40,3 +40,6 @@ class Comment(models.Model):
     date = models.DateField(auto_now_add = True)
     likes = models.TextField() # JSON ids
     author = models.ManyToManyField('User', blank = False, related_name = 'comments')
+
+    def __str__(self):
+        return self.content[:10]
