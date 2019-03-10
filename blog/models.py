@@ -16,17 +16,24 @@ class Post(models.Model):
     date = models.DateField(auto_now_add = True)
     likes = models.TextField() # JSON ids
     comments = models.ManyToManyField('Comment', blank = True, related_name = 'posts')
-    author = models.ManyToManyField('Author', blank = False, related_name = 'posts')
+    author = models.ManyToManyField('Author', related_name = 'posts')
 
     def __str__(self):
         return self.title
     # end
+
+    def getPreview(self):
+        a = 400
+        b = self.content
+
+        if( len(b) >= a ): return b[:a] + "..."
+        else: return b
 # end
 
 class Author(models.Model):
     avatar = models.CharField(max_length = 300)
     name = models.CharField(max_length = 100)
-    description = models.SlugField(max_length = 800)
+    description = models.CharField(max_length = 800)
     login = models.CharField(max_length = 100)
     password = models.CharField(max_length = 100)
 
@@ -39,7 +46,7 @@ class Comment(models.Model):
     content = models.TextField()
     date = models.DateField(auto_now_add = True)
     likes = models.TextField() # JSON ids
-    author = models.ManyToManyField('Author', blank = False, related_name = 'comments')
+    author = models.ManyToManyField('Author', related_name = 'comments')
 
     def __str__(self):
         return self.content[:10]

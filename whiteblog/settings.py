@@ -88,6 +88,8 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'graphql-django',
         'HOST': 'mongodb://oles:0password@ds163835.mlab.com:63835/graphql-django',
+        'USER': "oles",
+        'PASSWORD': "0password"
     }
 }
 
