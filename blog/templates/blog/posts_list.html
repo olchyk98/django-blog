@@ -9,7 +9,7 @@
 {% block content %}
     <div class="articles content">
         {% for post in posts %}
-            <article class="articles-item">
+            <a href="{% url 'view_post_url' id=post.id %}" class="articles-item">
                 <div class="articles-item-image">
                     <img src="{{ post.image }}" alt="preview" />
                 </div>
@@ -24,7 +24,7 @@
                         {{ post.getPreview }}
                     </p>
                 </div>
-            </article>
+            </a>
         {% endfor %}
     </div>
 {% endblock %}

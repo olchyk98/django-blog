@@ -49,6 +49,6 @@ class Comment(models.Model):
     author = models.ManyToManyField('Author', related_name = 'comments')
 
     def __str__(self):
-        return self.content[:10]
+        return self.content[:40]
     # end
 # end

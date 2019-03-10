@@ -28,6 +28,8 @@ body {
     font-family:"Quicksand";
     font-weight:400;
     font-size:1.75rem;
+    text-decoration:none;
+    color:black;
 }
 
 .nav-menu-link {

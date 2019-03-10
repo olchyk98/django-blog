@@ -1,0 +1,241 @@
+.post {
+    --padding:100px;
+
+    padding-left:var(--padding);
+    padding-right:var(--padding);
+    width:calc(100% - var(--padding) * 2)!important;
+}
+
+.post-backnav {
+    width:100%;
+    display:flex;
+    margin-top:100px;
+}
+
+.post-backnav-link {
+    font-size:.85rem;
+    color:rgba(0, 0, 0, .5);
+    font-family:"Arial";
+    font-weight:600;
+    text-decoration:none;
+    text-transform:uppercase;
+}
+
+.post-title {
+    text-align:center;
+    max-width:calc(100% - 10px);
+    width:900px;
+    font-family:"Lato";
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:2.5rem;
+}
+
+.post-preview {
+    width:100%;
+    max-height:75vh;
+    object-fit:cover;
+    object-position:center;
+    box-shadow:0px 0px 1px 0px rgba(0, 0, 0, .1);
+}
+
+.post-content {
+    font-family:"Quicksand";
+    font-weight:100;
+    text-align:center;
+    line-height:22.5px;
+}
+
+.post-author-title {
+    font-size:1.75rem;
+    font-weight:400;
+    font-family:"Arial";
+    margin-bottom:20px;
+}
+
+.post-author-info {
+    --margin:7.5px;
+
+    margin-top:var(--margin);
+    margin-bottom:var(--margin);
+    display:flex;
+    width:calc(100% - 15px);
+    align-items:center;
+}
+
+.post-author-info-avatar {
+    --size:65px;
+
+    height:var(--size);
+    width:var(--size);
+    border-radius:50%;
+    object-fit:cover;
+    object-position:center;
+    margin-right:20px;
+}
+
+.post-author-info-mat > * {
+    --margin:5px;
+
+    margin-top:var(--margin);
+    margin-bottom:var(--margin);
+}
+
+.post-author-info-mat-name {
+    font-weight:400;
+    text-transform:uppercase;
+    font-family:"Arial";
+    color:rgba(0, 0, 0, .85);
+}
+
+.post-author-info-mat-description {
+    letter-spacing:-.25px;
+    font-weight:100;
+    font-family:"Quicksand";
+    font-size:.95rem;
+    color:rgba(0, 0, 0, .95);
+}
+
+.post-comments {
+    width:600px;
+    max-width:100%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    position:relative;
+    margin-top:5px;
+    margin-bottom:15px;
+    border-top:1px solid rgba(0, 0, 0, .1);
+}
+
+.post-comments-title {
+    font-size:1.25rem;
+    color:rgba(0, 0, 0, .9);
+}
+
+.post-comments-submit {
+    display:flex;
+    align-items:center;
+}
+
+.post-comments-submit-image {
+    --size:45px;
+
+    height:var(--size);
+    width:var(--size);
+    flex-shrink:0;
+    border-radius:50%;
+    overflow:hidden;
+    position:relative;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+.post-comments-submit-image:before {
+    content:'Send';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    color:white;
+    font-size:.9rem;
+    z-index:2;
+    background:rgba(0, 0, 0, 1);
+    line-height:var(--size);
+    opacity:0;
+    text-align:center;
+    transition:.35s;
+}
+
+.post-comments-submit-image:hover:before {
+    opacity:1;
+}
+
+.post-comments-submit-image > img {
+    height:100%;
+    width:100%;
+    object-fit:cover;
+    object-position:center;
+}
+
+.post-comments-submit-input {
+    height:var(--size);
+    resize:none;
+    width:100%;
+    border:none;
+    background:transparent;
+    font-size:.95rem;
+    font-family:"Quicksand";
+    color:rgba(0, 0, 0, .95);
+    border:2px solid transparent;
+    outline:0;
+    border-radius:1.5px;
+    transition:.15s;
+}
+
+.post-comments-submit-input:focus {
+    border-color:rgba(0, 0, 0, .25);
+}
+
+.post-comments-list {
+    margin-top:20px;
+}
+
+.post-comments-list-item {
+    display:flex;
+    align-items:center;
+}
+
+.post-comments-list-item-avatar {
+    --size:40px;
+
+    height:var(--size);
+    width:var(--size);
+    overflow:hidden;
+    border-radius:50%;
+    margin-right:15px;
+    position:relative;
+}
+
+.post-comments-list-item-avatar > img {
+    height:100%;
+    width:100%;
+}
+
+.post-comments-list-item-info {
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.post-comments-list-item-info > * {
+    --margin:2px;
+
+    margin-top:var(--margin);
+    margin-bottom:var(--margin);
+}
+
+.post-comments-list-item-info-name {
+    font-weight:500;
+    font-family:"Quicksand";
+    color:blue;
+    font-size:.985rem;
+}
+
+.post-comments-list-item-info-content {
+    font-family:"Lato";
+    font-weight:400;
+}
+
+.post-comments-list-item-info-like {
+    background:transparent;
+    color:blue;
+    cursor:pointer;
+    outline:0;
+    border:none;
+    font-size:.95rem;
+    margin-top:2.5px;
+    padding:0;
+}
