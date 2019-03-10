@@ -1,6 +1,7 @@
 html, body {
     margin:0;
     height:100%;
+    font-family:"Arial";
 }
 
 body {
@@ -12,7 +13,7 @@ body {
 .nav {
     --padding:20px;
 
-    height:60px;
+    height:80px;
     background:white;
     width:calc(100vw - var(--padding) * 2);
     padding-left:var(--padding);
