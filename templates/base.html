@@ -25,5 +25,10 @@
     {% block content %}
         <pre>Error</pre>
     {% endblock %}
+
+    <script type="text/javascript" src="{% static 'js/cookies.js' %}"></script>
+    <script>
+        window._HOSTPATH_ = 'http://' + window.location.host;
+    </script>
 </body>
 </html>
