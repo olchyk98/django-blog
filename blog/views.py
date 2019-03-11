@@ -10,6 +10,22 @@ from .models import Post
 
 # Create your views here.
 
+class LoginView(View):
+    def get(self, req):
+        return render(req, 'blog/login.html', context = {
+
+        })
+    # end
+# end
+
+class RegisterView(View):
+    def get(self, req):
+        return render(req, 'blog/register.html', context = {
+
+        })
+    # end
+# end
+
 class PostsList(View):    
     def get(self, req):
         # Get posts
@@ -31,7 +47,6 @@ class ViewPost(View):
         for ma in range(post.comments.count()):
             likes = json.loads(comments[ma].likes)['likes']
 
-            print(len(likes))
             comments[ma].likesInt = len(likes)
             comments[ma].isLiked = "1" in likes
 

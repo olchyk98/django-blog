@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Register</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'blog/register/main.css' %}">
+    <script type="text/javascript" src="{% static 'blog/register/script.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="content auth register">
+        <form class="auth-form" id="register-form">
+            <h2 class="auth-form-title">Register</h2>
+            <input
+                type="text"
+                placeholder="Name"
+                class="auth-form-input"
+                id="register-fname"
+                required
+            />
+            <input
+                type="text"
+                placeholder="Login"
+                class="auth-form-input"
+                id="register-flogin"
+                required
+            />
+            <input
+                type="password"
+                placeholder="Password"
+                class="auth-form-input"
+                id="register-fpassword"
+                required
+            />
+            <button type="submit" class="auth-form-submit">Register</button>
+        </form>
+    </div>
+{% endblock %}
