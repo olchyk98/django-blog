@@ -29,9 +29,9 @@ class ViewPost(View):
         comments = list(post.comments.all())
 
         for ma in range(post.comments.count()):
-            likes = json.loads(comments[ma].likes).likes # error
+            likes = json.loads(comments[ma].likes)['likes']
 
-            print(len(likes), likes)
+            print(len(likes))
             comments[ma].likesInt = len(likes)
             comments[ma].isLiked = "1" in likes
 
