@@ -4,23 +4,29 @@
 {% block head %}
     <title>Login</title>
     <link type="text/css" rel="stylesheet" href="{% static 'blog/register/main.css' %}">
+    <script type="text/javascript" src="{% static 'blog/login/script.js' %}"></script>
 {% endblock %}
 
 {% block content %}
     <div class="content auth register">
-        <div class="auth-form">
+        <form class="auth-form" id="login-form" success-url="{% url 'view_posts_url' %}">
             <h2 class="auth-form-title">Log in</h2>
             <input
                 type="text"
                 placeholder="Login"
-                class="auth-form-input"
+                class="auth-form-input auth-form-disable"
+                id="login-flogin"
+                required
             />
             <input
                 type="password"
                 placeholder="Password"
-                class="auth-form-input"
+                class="auth-form-input auth-form-disable"
+                id="login-fpassword"
+                required
             />
-            <button class="auth-form-submit">Login</button>
-        </div>
+            <p id="auth-form-message" class="auth-form-message hidden">Something went wrong</p>
+            <button class="auth-form-submit auth-form-disable">Login</button>
+        </form>
     </div>
 {% endblock %}

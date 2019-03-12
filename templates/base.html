@@ -18,8 +18,12 @@
         </a>
         <div class="nav-menu">
             <a class="nav-menu-link" href="{% url 'view_posts_url' %}">Posts</a>
-            <a class="nav-menu-link" href="{% url 'login_page_url' %}">Login (TODO: Me | Login)</a>
-            <a class="nav-menu-link" href="#">Write</a>
+            {% if inAuth %}
+                <a class="nav-menu-link" href="#">Write</a>
+                <a class="nav-menu-link" href="{% url 'logout_redirect_url' %}">Logout</a>
+            {% else %}
+                <a class="nav-menu-link" href="{% url 'login_page_url' %}">Login</a>
+            {% endif %}
         </div>
     </nav>
     {% block content %}

@@ -109,3 +109,31 @@ body {
     border:none;
     cursor:pointer;
 }
+
+.auth-form-message {
+    --margin:3px;
+
+    margin-top:var(--margin);
+    margin-bottom:var(--margin);
+    opacity:.9;
+    font-size:.9rem;
+    font-family:"Quicksand";
+    color:green;
+}
+
+.auth-form-message.error {
+    color:red;
+}
+
+.auth-form-message.hidden {
+    display:none;
+}
+
+input.auth-form-disable {
+    transition:.15s;
+}
+
+input.auth-form-disable:disabled {
+    border-color:green!important;
+    background:rgba(255, 255, 255, .75);
+}

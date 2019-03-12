@@ -42,6 +42,7 @@ window.onload = function() {
                 case 200: // SUCCESS: registered
                     console.log("SUCCESS");
                 break;
+                default:break;
             }
         }).catch(console.error);
     });
