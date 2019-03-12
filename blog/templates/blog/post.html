@@ -14,42 +14,5 @@
         <h1 class="post-title">{{ post.title }}</h1>
         <img class="post-preview" src="{{ post.image }}" alt="preview" />
         <p class="post-content">{{ post.content }}</p>
-        <section class="post-author">
-            <h4 class="post-author-title">About the Author</h4>
-            <div class="post-author-info">
-                <img class="post-author-info-avatar" src="{{ post.author.all.first.avatar }}" alt="user" />
-                <div class="post-author-info-mat">
-                    <p class="post-author-info-mat-name">{{ post.author.all.first.name }}</p>
-                    <p class="post-author-info-mat-description">
-                        asnd asdkjna dsakjdn sadkasjnd askdnsakjdnsakjd asdkjasnd askdjnasjkd sakdjnsa dksajnd sakjdn sakdjnsa djksan dksajnd sakjdn sad
-                    </p>
-                </div>
-            </div>
-        </section>
-        <section class="post-comments">
-            <h4 class="post-author-title">Comments</h4>
-            <div class="post-comments-submit">
-                <div class="post-comments-submit-image">
-                    <img src="{{ post.author.all.first.avatar }}" alt="User" />
-                </div>
-                <textarea
-                    class="post-comments-submit-input"
-                    placeholder="Type your comment..."></textarea>
-            </div>
-            <div class="post-comments-list">
-                {% for comment in comments %}
-                    <article class="post-comments-list-item">
-                        <div class="post-comments-list-item-avatar">
-                            <img src="{{ comment.author.first.avatar }}" alt="comment author" />
-                        </div>
-                        <div class="post-comments-list-item-info">
-                            <span class="post-comments-list-item-info-name">{{ comment.author.first.name }}</span>
-                            <p class="post-comments-list-item-info-content">{{ comment.content }}</p>
-                            <button class="post-comments-list-item-info-like">Like ({{ comment.likesInt }})</button>
-                        </div>
-                    </article>
-                {% endfor %}
-            </div>
-        </section>
     </div>
 {% endblock %}

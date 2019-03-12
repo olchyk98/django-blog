@@ -15,7 +15,6 @@ class Post(models.Model):
     content = models.TextField()
     date = models.DateField(auto_now_add = True)
     likes = models.TextField() # JSON ids
-    comments = models.ManyToManyField('Comment', blank = True, related_name = 'posts')
     author = models.ManyToManyField('Author', related_name = 'posts')
 
     def __str__(self):
@@ -39,16 +38,5 @@ class Author(models.Model):
 
     def __str__(self):
         return self.name
-    # end
-# end
-
-class Comment(models.Model):
-    content = models.TextField()
-    date = models.DateField(auto_now_add = True)
-    likes = models.TextField() # JSON ids
-    author = models.ManyToManyField('Author', related_name = 'comments')
-
-    def __str__(self):
-        return self.content[:40]
     # end
 # end

@@ -24,7 +24,7 @@ from .models import Post, Author
 
 class LoginView(View):
     def get(self, request):
-        if(not request.session['uauth']): # no auth data -> move to login page
+        if(not request.session.get('uauth', False)): # no auth data -> move to login page
             return render(request, 'blog/login.html')
         else: # already logined -> move to home page
             return redirect('view_posts_url')
@@ -57,7 +57,7 @@ class LoginView(View):
 
 class RegisterView(View):
     def get(self, request):
-        if(not request.session['uauth']): # no auth data -> move to register page
+        if(not request.session.get('uauth', False)): # no auth data -> move to register page
             return render(request, 'blog/register.html')
         else: # already logined -> move to home page
             return redirect('view_posts_url')
@@ -96,7 +96,9 @@ class RegisterView(View):
 
 class LogoutView(View):
     def get(self, request):
-        request.session['uauth'] = None
+        if(request.session.get('uauth', False)):
+            request.session['uauth'] = None
+        # end
         return redirect('login_page_url')
     # end
 # end
@@ -117,18 +119,8 @@ class ViewPost(View):
     def get(self, request, id):
         post = get_object_or_404(Post, id = id)
 
-        comments = list(post.comments.all())
-
-        for ma in range(post.comments.count()):
-            likes = json.loads(comments[ma].likes)['likes']
-
-            comments[ma].likesInt = len(likes)
-            comments[ma].isLiked = "1" in likes
-        # end
-
         return render(request, 'blog/post.html', context = {
-            'post': post,
-            'comments': comments
+            'post': post
         })
     # end
 # end
