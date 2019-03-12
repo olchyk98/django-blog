@@ -10,6 +10,16 @@ body {
     align-items:stretch;
 }
 
+.hidden {
+    display:none;
+    position:absolute;
+    top:-9999px;
+    left:-9999px;
+    transition:all 99999s ease-in-out;
+    visibility:hidden;
+    opacity:0;
+}
+
 .nav {
     --padding:20px;
 

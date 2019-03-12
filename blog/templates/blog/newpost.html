@@ -3,11 +3,29 @@
 
 {% block head %}
     <title>Create new post</title>
-    <link type="text/css" rel="stylesheet" href="{% static 'blog/post/main.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'blog/newpost/main.css' %}">
+    <script type="text/javascript" src="{% static 'blog/newpost/script.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-    <div class="content">
-        
+    <div class="content newpost">
+        <h1 class="newpost-editmat newpost-title" contenteditable>Type your title here</h1>
+        <input
+            id="newpost-imageinp"
+            class="hidden"
+            type="file"
+            accept="image/*"
+        />
+        <label class="newpost-image" id="newpost-image" for="newpost-imageinp">
+            {% comment %}
+                if image loaded |> render image[src=uploaded_image_COU] here
+                else |> show span{"upload image"} button
+            {% endcomment %}
+            <span>Upload image</span>
+        </label>
+        <p class="newpost-editmat newpost-content" contenteditable>
+            Hello, World!
+        </p>
+        <button class="newpost-submit">Post</button>
     </div>
 {% endblock %}

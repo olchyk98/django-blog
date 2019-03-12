@@ -1,0 +1,58 @@
+.newpost {
+    --padding:25px;
+
+    padding-left:var(--padding);
+    padding-right:var(--padding);
+    width:calc(100% - var(--padding) * 2)!important; /* blog/css/index.css has a higher priority */
+    position:relative;
+}
+
+.newpost-editmat {
+    outline:0;
+    transition:.15s;
+}
+
+.newpost-editmat:focus {
+    color:blue;
+    caret-color:black; /*  when I change color it affect input caret also */
+}
+
+.newpost-editmat:empty {
+    background:rgba(255, 0, 0, .25);
+}
+
+.newpost-image {
+    height:auto;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    cursor:pointer;
+}
+
+.newpost-image > span {
+    font-family:"Quicksand";
+    font-weight:300;
+    text-transform:uppercase;
+    font-size:.975rem;
+    transition:.25s;
+}
+
+.newpost-image:hover > span {
+    color:blue;
+}
+
+.newpost-image > img {
+    width:100%;
+    height:400px;
+    object-fit:contain;
+    object-position:center;
+}
+
+.newpost-submit {
+    display:block;
+    margin-left:auto;
+    border-radius:2.5px;
+    cursor:pointer;
+    background:white;
+    font-size:.85rem;
+}

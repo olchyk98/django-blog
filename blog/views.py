@@ -125,5 +125,9 @@ class ViewPost(View):
 
 class WriteView(View):
     def get(self, request):
-        pass
+        # Check if user has a session
+        if(request.session['uauth']): # Return page if user authenticated
+            return render(request, 'blog/newpost.html')
+        else: # User has no session -> Move to login page
+            return redirect('login_page_url')
     # end

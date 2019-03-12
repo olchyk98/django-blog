@@ -15,5 +15,5 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name = 'login_page_url'),
     url(r'^register/$', RegisterView.as_view(), name = 'register_page_url'),
     url(r'^logout/$', LogoutView.as_view(), name = 'logout_redirect_url'),
-    url(r'^write/$', WriteView.as_view())
+    url(r'^write/$', WriteView.as_view(), name = 'write_post_url')
 ]
