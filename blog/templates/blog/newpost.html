@@ -9,7 +9,7 @@
 
 {% block content %}
     <div class="content newpost">
-        <h1 class="newpost-editmat newpost-title" contenteditable>Type your title here</h1>
+        <h1 id="newpost-title" class="newpost-editmat newpost-title" contenteditable></h1>
         <input
             id="newpost-imageinp"
             class="hidden"
@@ -23,9 +23,7 @@
             {% endcomment %}
             <span>Upload image</span>
         </label>
-        <p class="newpost-editmat newpost-content" contenteditable>
-            Hello, World!
-        </p>
-        <button class="newpost-submit">Post</button>
+        <p class="newpost-editmat newpost-content" id="newpost-content" contenteditable></p>
+        <button id="newpost-submit" class="newpost-submit">Post</button>
     </div>
 {% endblock %}

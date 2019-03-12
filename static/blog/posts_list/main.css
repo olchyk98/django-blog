@@ -5,12 +5,16 @@
 }
 
 .articles-item {
+    --margin:20px;
+
+    margin-top:var(--margin);
+    margin-bottom:var(--margin);
     display:flex;
     flex-direction:column;
     align-items:center;
     width:800px;
     max-width:100vw;
-    height:400px;
+    height:auto;
     text-decoration:none;
     flex-shrink:0;
     position:relative;

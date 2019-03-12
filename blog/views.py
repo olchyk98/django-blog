@@ -5,11 +5,22 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View
 from django.http import HttpResponse
 
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+
+import random
 import json
 
 from .models import Post, Author
 
 # Create your views here.
+
+'''
+    ### RESPONSE ###
+    200 - Success
+    400 - Requested resource wan't found
+    500 - Session wasn't confirmed
+'''
 
 class LoginView(View):
     def get(self, request):
@@ -36,11 +47,9 @@ class LoginView(View):
             user = Author.objects.get(login = data['login'], password = data['password'])
             # breaks here if user doesn't exist
             request.session['uauth']['login'] = user.login
-            request.session['uauth']['password'] = user.password
 
             return _response(200)
         except Author.DoesNotExist:
-            print("Doesn't exist")
             return _response(400)
         # end
     # end
@@ -75,7 +84,7 @@ class RegisterView(View):
             # Create user
             user = Author()
             user.login = request.session['uauth']['login'] = data['login']
-            user.password = request.session['uauth']['password'] = data['password']
+            user.password= data['password']
             user.name = data['name']
             user.save()
 
@@ -115,6 +124,7 @@ class ViewPost(View):
 
             comments[ma].likesInt = len(likes)
             comments[ma].isLiked = "1" in likes
+        # end
 
         return render(request, 'blog/post.html', context = {
             'post': post,
@@ -130,4 +140,61 @@ class WriteView(View):
             return render(request, 'blog/newpost.html')
         else: # User has no session -> Move to login page
             return redirect('login_page_url')
+        # end
     # end
+    
+    def post(self, request):
+        '''
+            Check if user has his session (Doesn't make any sense,
+            because we're checking session in GET request resolver and user cannot
+            do a POST request from an other client (postman for example),
+            because django validates csrftoken).
+        '''
+
+        def _response(status):
+            return HttpResponse(json.dumps({
+                'status': status
+            }))
+        # end
+
+        if(not request.session['uauth']): return _response(500)
+        
+        # Get data
+        data = json.loads(request.POST.get('data'))
+
+        try:
+            user = Author.objects.get(login = request.session['uauth']['login'])
+        except Author.DoesNotExist: # session was not confirmed
+            return _response(500)
+        # end
+    
+        # TODO: Image
+        def genFName():
+            a = list("abcdefghijklmnopqrstuvwxyz")
+            b = ""
+
+            for ma in range(100):
+                b += random.choice(a)
+            # end
+
+            return request.session['uauth']['login'] + "_" + b
+        # end
+
+        # Receive image
+        image = request.FILES['image']
+        fs = FileSystemStorage()
+        imageFS_Filename = fs.save(genFName(), image)
+        imageUrl = fs.url(imageFS_Filename)
+
+        np = Post()
+        np.title = data['title']
+        np.content = data['content']
+        np.image = imageUrl
+        np.likes = '{"likes":[]}' # Empty JSON object
+        np.save()
+
+        np.author.add(user)
+
+        return _response(200)
+    # end
+# end
