@@ -15,9 +15,18 @@ window.onload = function() {
     setField("register-flogin", "login");
     setField("register-fpassword", "password");
 
-    document.getElementById("register-form").addEventListener('submit', e => {
+    document.getElementById("register-form").addEventListener('submit', function(e) {
         e.preventDefault();
-        console.log("REGISTER");
+        
+        function disableInputs(dis = true) {
+            const a = document.getElementsByClassName('auth-form-disable');
+            for(io of a) {
+                io.disabled = dis;
+            }
+        }
+
+        disableInputs(true);
+
         fetch(`${ window._HOSTPATH_ }/register/`, {
             method: "POST",
             headers: {
@@ -29,6 +38,7 @@ window.onload = function() {
                 password: fields.password
             })
         }).then((res) => {
+            disableInputs(false);
             if(res.ok) {
                 return res.json();
             } else {
@@ -36,14 +46,24 @@ window.onload = function() {
             }
         }).then((e) => {
             switch(e.status) {
-                case 400: // ERROR: user exists
-                    console.log("ERROR");
+                case 200: { // SUCCESS: registered
+                    const a = document.getElementById('auth-form-message');
+                    a.textContent = "Success";
+                    a.classList.remove('error', 'hiden');
+                    window.location.href = this.getAttribute('success-url');
+                }
                 break;
-                case 200: // SUCCESS: registered
-                    console.log("SUCCESS");
+                case 400: { // ERROR: user exists
+                    const a = document.getElementById('auth-form-message');
+                    a.textContent = "User with this login already exists!";
+                    a.classList.add('error');
+                    a.classList.remove('hidden');
+                }
                 break;
                 default:break;
             }
-        }).catch(console.error);
+        }).catch(() => {
+            disableInputs(false);
+        });
     });
 }

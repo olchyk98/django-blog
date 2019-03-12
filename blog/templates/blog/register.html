@@ -9,30 +9,32 @@
 
 {% block content %}
     <div class="content auth register">
-        <form class="auth-form" id="register-form">
+        <form class="auth-form" id="register-form" success-url="{% url 'view_posts_url' %}">
             <h2 class="auth-form-title">Register</h2>
             <input
                 type="text"
                 placeholder="Name"
-                class="auth-form-input"
-                id="register-fname auth-form-disable"
+                class="auth-form-input auth-form-disable"
+                id="register-fname"
                 required
             />
             <input
                 type="text"
                 placeholder="Login"
-                class="auth-form-input"
-                id="register-flogin auth-form-disable"
+                class="auth-form-input auth-form-disable"
+                id="register-flogin"
                 required
             />
             <input
                 type="password"
                 placeholder="Password"
-                class="auth-form-input"
-                id="register-fpassword auth-form-disable"
+                class="auth-form-input auth-form-disable"
+                id="register-fpassword"
                 required
             />
+            <p id="auth-form-message" class="auth-form-message hidden">Something went wrong</p>
             <button type="submit" class="auth-form-submit">Register</button>
+            <a class="auth-form-swapf" href="{% url 'register_page_url' %}">Login</a>
         </form>
     </div>
 {% endblock %}

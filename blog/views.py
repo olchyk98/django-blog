@@ -68,18 +68,20 @@ class RegisterView(View):
             }))
 
         # Check if user with login exists
-        if(Author.objects.get(login = data['login'])):
+        try:
+            Author.objects.get(login = data['login'])
             return submit(400)
+        except Author.DoesNotExist:
+            # Create user
+            user = Author()
+            user.login = request.session['uauth']['login'] = data['login']
+            user.password = request.session['uauth']['password'] = data['password']
+            user.name = data['name']
+            user.save()
 
-        # Create user
-        user = Author()
-        user.login = request.session['uauth']['login'] = data['login']
-        user.password = request.session['uauth']['password'] = data['password']
-        user.name = data['name']
-        user.save()
-
-        # Submit success response
-        if(not resolved): return submit(200)
+            # Submit success response
+            if(not resolved): return submit(200)
+        # end
     # end
 # end
 
@@ -120,3 +122,8 @@ class ViewPost(View):
         })
     # end
 # end
+
+class WriteView(View):
+    def get(self, request):
+        pass
+    # end
